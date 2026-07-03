@@ -231,7 +231,7 @@ def main():
             if msg.get("sources"):
                 render_sources(msg["sources"])
 
-    typed = st.chat_input("Ask Pranay anything about VMware, cloud & AI…")
+    typed = st.chat_input("Ask Pranay anything about Intelligent Infrastructure…")
     prompt = typed or st.session_state.pop("pending", None)
     if not prompt:
         return
