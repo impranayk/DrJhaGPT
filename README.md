@@ -8,6 +8,26 @@ published work at [drpranayjha.com](https://drpranayjha.com).
 
 Originally built on IBM Watson; now fully **open-source and free to run**.
 
+## Architecture at a glance
+
+```mermaid
+flowchart LR
+    subgraph Site["drpranayjha.com"]
+      W["Chat widget / page / full-screen"]
+    end
+    subgraph App["DrJhaGPT (Streamlit Cloud)"]
+      UI["Streamlit UI"] --> RAG["Retriever"] --> IDX[("Knowledge index")]
+      UI --> LLMC["Groq client"] --> GROQ[["Llama 3.3 70B via Groq"]]
+    end
+    W -->|iframe| UI
+    GHA["Nightly GitHub Action"] -->|rebuild| IDX
+    GHA -->|fetch| WP[("WordPress REST API")]
+```
+
+**LLM:** Meta **Llama 3.3 70B** (`llama-3.3-70b-versatile`) served via the **Groq** API.
+
+📐 **Full details, request/ingestion flows, and diagrams:** see [ARCHITECTURE.md](ARCHITECTURE.md).
+
 ## Stack
 
 | Concern | Technology |
