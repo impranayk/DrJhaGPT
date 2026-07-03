@@ -31,7 +31,15 @@ def logo_image():
         return "🤖"
 
 
-USER_AVATAR = "👤"
+@lru_cache(maxsize=1)
+def user_image():
+    """Brand-matched user avatar (charcoal + white silhouette)."""
+    try:
+        from PIL import Image
+
+        return Image.open(config.USER_AVATAR_PATH)
+    except Exception:
+        return "👤"
 
 SUGGESTIONS = [
     "What is VMware HCX and when should I use it?",
@@ -240,7 +248,7 @@ def main():
 
     # Replay history.
     for msg in st.session_state.messages:
-        avatar = logo_image() if msg["role"] == "assistant" else USER_AVATAR
+        avatar = logo_image() if msg["role"] == "assistant" else user_image()
         with st.chat_message(msg["role"], avatar=avatar):
             st.markdown(msg["content"])
             if msg.get("sources"):
@@ -252,7 +260,7 @@ def main():
         return
 
     st.session_state.messages.append({"role": "user", "content": prompt})
-    with st.chat_message("user", avatar=USER_AVATAR):
+    with st.chat_message("user", avatar=user_image()):
         st.markdown(prompt)
 
     with st.chat_message("assistant", avatar=logo_image()):
