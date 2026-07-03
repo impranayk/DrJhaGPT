@@ -135,22 +135,32 @@ div[data-testid="stButton"] > button:hover {
 
 
 # ----------------------------------------------------------------------------- components
+def clear_chat():
+    st.session_state.messages = []
+    st.session_state.pop("pending", None)
+
+
 def render_header():
     logo = logo_data_uri()
     img = f'<img src="{logo}" alt="logo">' if logo else ""
-    st.markdown(
-        f"""
-        <div class="dj-masthead">
-          {img}
-          <div class="dj-headtext">
-            <h1 class="dj-title">DrJha<span class="accent">GPT</span></h1>
-            <p class="dj-journal">{config.BRAND_EYEBROW}</p>
-          </div>
-        </div>
-        <hr class="dj-rule">
-        """,
-        unsafe_allow_html=True,
-    )
+    left, right = st.columns([5, 1.4], vertical_alignment="center")
+    with left:
+        st.markdown(
+            f"""
+            <div class="dj-masthead">
+              {img}
+              <div class="dj-headtext">
+                <h1 class="dj-title">DrJha<span class="accent">GPT</span></h1>
+                <p class="dj-journal">{config.BRAND_EYEBROW}</p>
+              </div>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+    with right:
+        st.button("↺  New chat", key="new_chat", on_click=clear_chat,
+                  use_container_width=True)
+    st.markdown('<hr class="dj-rule">', unsafe_allow_html=True)
 
 
 def render_sidebar():
