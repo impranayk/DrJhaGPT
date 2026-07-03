@@ -115,6 +115,11 @@ div[data-testid="stButton"] > button {
 div[data-testid="stButton"] > button:hover {
   border-color: var(--accent); color: var(--accent); background: #fff; }
 
+/* "New chat" button — red outline that fills on hover */
+.st-key-new_chat button { border: 1.5px solid var(--accent) !important;
+  color: var(--accent) !important; text-align: center !important; }
+.st-key-new_chat button:hover { background: var(--accent) !important; color: #fff !important; }
+
 /* ---- Chat input ---- */
 [data-testid="stChatInput"] { border: 1.5px solid var(--accent) !important;
   border-radius: 12px !important; background: #fff !important; }
