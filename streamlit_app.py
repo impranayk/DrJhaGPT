@@ -161,6 +161,13 @@ def clear_chat():
 
 
 def render_header():
+    if "mini" in st.query_params:
+        # Compact header for the floating widget (its own bar shows the brand).
+        _, right = st.columns([2, 1])
+        with right:
+            st.button("↺  New chat", key="new_chat", on_click=clear_chat,
+                      use_container_width=True)
+        return
     logo = logo_data_uri()
     img = f'<img src="{logo}" alt="logo">' if logo else ""
     left, right = st.columns([5, 1.4], vertical_alignment="center")
