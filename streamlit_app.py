@@ -62,10 +62,13 @@ st.markdown(
 html, body, [class*="css"], .stApp { font-family: 'Inter', sans-serif; color: var(--ink); }
 .stApp { background: #ffffff; }
 
-/* Hide Streamlit chrome (incl. the "Built with Streamlit" badge) */
-[data-testid="stToolbar"], [data-testid="stDecoration"], [data-testid="stStatusWidget"],
-#MainMenu, footer, [data-testid="stAppViewerBadge"], [class*="viewerBadge"],
-a[href*="streamlit.io"] { display: none !important; }
+/* Hide Streamlit chrome + the Community Cloud "Built with Streamlit" badge */
+#MainMenu, footer, [data-testid="stToolbar"], [data-testid="stDecoration"],
+[data-testid="stStatusWidget"], [data-testid="stAppViewerBadge"],
+[data-testid="stAppDeployButton"],
+[class*="viewerBadge"], [class*="_viewerBadge"], [class*="ViewerBadge"],
+[class*="_profileContainer"], [class*="profileContainer"],
+a[href*="streamlit.io"], a[href*="streamlit.app"] { display: none !important; }
 header[data-testid="stHeader"] { background: transparent; height: 0; }
 /* Breathing room above the New chat button (esp. in the narrow widget) */
 .st-key-new_chat { margin-top: 6px; }
