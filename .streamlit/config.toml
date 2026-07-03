@@ -1,0 +1,12 @@
+[client]
+showErrorDetails = false
+toolbarMode = "minimal"
+
+# Brand palette matched to drpranayjha.com: dark navy/charcoal + red accent.
+[theme]
+base = "dark"
+primaryColor = "#E11D2A"
+backgroundColor = "#0B1220"
+secondaryBackgroundColor = "#151C2E"
+textColor = "#F5F7FA"
+font = "sans serif"
