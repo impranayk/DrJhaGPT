@@ -194,7 +194,7 @@ def pick_suggestion(question: str):
 
 def render_empty_state():
     st.markdown(
-        '<p class="dj-intro">Ask a question, or start with one of these:</p>',
+        '<p class="dj-intro">Ask Dr. Pranay Jha anything — or start with one of these:</p>',
         unsafe_allow_html=True,
     )
     cols = st.columns(2)
@@ -231,7 +231,7 @@ def main():
             if msg.get("sources"):
                 render_sources(msg["sources"])
 
-    typed = st.chat_input("Ask me anything about intelligent infrastructure…")
+    typed = st.chat_input("Ask Dr. Pranay Jha anything about VMware, cloud & AI…")
     prompt = typed or st.session_state.pop("pending", None)
     if not prompt:
         return
