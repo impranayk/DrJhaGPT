@@ -73,11 +73,13 @@ header[data-testid="stHeader"] { background: transparent; height: 0; }
 .dj-masthead { display: flex; align-items: center; gap: 18px; }
 .dj-masthead img { width: 64px; height: 64px; border-radius: 12px; box-shadow: 0 1px 4px rgba(0,0,0,.12); flex-shrink: 0; }
 .dj-headtext { display: flex; flex-direction: column; }
-.dj-title { font-family: 'Oswald', sans-serif; color: var(--ink); font-size: 32px;
-            font-weight: 700; letter-spacing: .3px; line-height: 1.0; margin: 0; }
+.dj-title { font-family: 'Oswald', sans-serif !important; color: var(--ink); font-size: 32px;
+            font-weight: 700; letter-spacing: .3px; line-height: .95 !important;
+            margin: 0 !important; padding: 0 !important; }
 .dj-title .accent { color: var(--accent); }
 .dj-journal { font-family: 'Inter', sans-serif; font-style: italic; color: var(--accent);
-              font-size: 13.5px; font-weight: 500; letter-spacing: .2px; margin: 1px 0 0; }
+              font-size: 13.5px; font-weight: 500; letter-spacing: .2px; line-height: 1.15;
+              margin: 0 !important; padding: 0 !important; }
 .dj-rule { height: 3px; background: var(--accent); width: 54px; border: 0; margin: 14px 0 4px;
            border-radius: 2px; }
 
