@@ -242,7 +242,31 @@ def render_empty_state():
 
 
 # ----------------------------------------------------------------------------- app
+def _hide_streamlit_badge():
+    """Remove the Community Cloud 'Built with Streamlit' bar + Fullscreen link.
+
+    CSS can't reliably target it, so we run JS in a same-origin child frame that
+    walks the parent DOM and hides those elements by their link/text (robust to
+    Streamlit's changing class names). Re-runs on an interval since the badge is
+    injected after load.
+    """
+    st.html(
+        """<script>
+        (function(){
+          function scrub(d){ if(!d) return; try{
+            d.querySelectorAll('a[href*="streamlit.io"],a[href*="streamlit.app"]').forEach(function(a){a.style.display='none';if(a.parentElement){a.parentElement.style.display='none';}});
+            Array.prototype.forEach.call(d.querySelectorAll('button,a,span'),function(el){if(el.childElementCount===0){var t=(el.textContent||'').trim();if(t==='Fullscreen'||t==='Built with Streamlit'){var p=el.closest('div');if(p){p.style.display='none';}}}});
+          }catch(e){} }
+          function kill(){ scrub(document); try{ if(window.parent&&window.parent!==window){ scrub(window.parent.document); } }catch(e){} }
+          setInterval(kill,400); kill();
+        })();
+        </script>""",
+        unsafe_allow_javascript=True,
+    )
+
+
 def main():
+    _hide_streamlit_badge()
     render_sidebar()
     render_header()
 
