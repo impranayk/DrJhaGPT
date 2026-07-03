@@ -96,7 +96,8 @@ header[data-testid="stHeader"] { background: transparent; height: 0; }
 /* ---- User question bubble (right-aligned, grey) ---- */
 .dj-user-row { display: flex; justify-content: flex-end; margin: 12px 0 4px; }
 .dj-user-bubble { background: var(--panel); color: var(--ink); border: 1px solid var(--border);
-  border-radius: 14px 14px 4px 14px; padding: 9px 14px; max-width: 82%;
+  border-right: 3px solid var(--accent);
+  border-radius: 14px 14px 4px 14px; padding: 9px 14px 9px 16px; max-width: 82%;
   font-size: 15px; line-height: 1.55; white-space: pre-wrap; }
 
 /* ---- "Related reading" source cards ---- */
