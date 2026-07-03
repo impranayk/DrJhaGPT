@@ -79,7 +79,7 @@ header[data-testid="stHeader"] { background: transparent; height: 0; }
             margin: 0 !important; padding: 0 !important; }
 .dj-title .accent { color: var(--accent); }
 .dj-journal { font-family: 'Inter', sans-serif; font-style: italic; color: var(--accent);
-              font-size: 12.5px; font-weight: 500; letter-spacing: .2px; line-height: 1.15;
+              font-size: 11px; font-weight: 500; letter-spacing: .2px; line-height: 1.15;
               margin: 5px 0 0 !important; padding: 0 !important; }
 .dj-rule { height: 3px; background: var(--accent); width: 54px; border: 0; margin: 14px 0 4px;
            border-radius: 2px; }
