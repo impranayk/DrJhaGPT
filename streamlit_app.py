@@ -62,10 +62,13 @@ st.markdown(
 html, body, [class*="css"], .stApp { font-family: 'Inter', sans-serif; color: var(--ink); }
 .stApp { background: #ffffff; }
 
-/* Hide Streamlit chrome for a production look */
+/* Hide Streamlit chrome (incl. the "Built with Streamlit" badge) */
 [data-testid="stToolbar"], [data-testid="stDecoration"], [data-testid="stStatusWidget"],
-#MainMenu, footer { display: none !important; }
+#MainMenu, footer, [data-testid="stAppViewerBadge"], [class*="viewerBadge"],
+a[href*="streamlit.io"] { display: none !important; }
 header[data-testid="stHeader"] { background: transparent; height: 0; }
+/* Breathing room above the New chat button (esp. in the narrow widget) */
+.st-key-new_chat { margin-top: 6px; }
 
 .block-container { max-width: 800px; padding-top: 1.6rem; padding-bottom: 6rem; }
 
