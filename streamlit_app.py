@@ -81,8 +81,8 @@ header[data-testid="stHeader"] { background: transparent; height: 0; }
 .dj-journal { font-family: 'Inter', sans-serif; font-style: italic; color: var(--accent);
               font-size: 11px; font-weight: 500; letter-spacing: .2px; line-height: 1.15;
               margin: 5px 0 0 !important; padding: 0 !important; }
-.dj-rule { height: 3px; background: var(--accent); width: 54px; border: 0; margin: 14px 0 4px;
-           border-radius: 2px; }
+.dj-rule { height: 1.5px; background: var(--accent); width: 100%; border: 0; margin: 14px 0 6px;
+           border-radius: 0; }
 
 /* ---- Chat messages ---- */
 [data-testid="stChatMessage"] { background: transparent; padding: .35rem 0; }
