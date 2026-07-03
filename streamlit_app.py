@@ -70,17 +70,20 @@ header[data-testid="stHeader"] { background: transparent; height: 0; }
 .block-container { max-width: 800px; padding-top: 1.6rem; padding-bottom: 6rem; }
 
 /* ---- Masthead ---- */
-.dj-masthead { display: flex; align-items: center; gap: 18px; }
-.dj-masthead img { width: 60px; height: 60px; border-radius: 12px; border: 2px solid var(--accent);
+.dj-masthead { display: flex; align-items: center; gap: clamp(10px, 3vw, 18px); }
+.dj-masthead img { width: clamp(44px, 13vw, 60px); height: clamp(44px, 13vw, 60px);
+                   border-radius: 12px; border: 2px solid var(--accent);
                    box-shadow: 0 1px 4px rgba(0,0,0,.10); flex-shrink: 0; }
-.dj-headtext { display: flex; flex-direction: column; }
-.dj-title { font-family: 'Oswald', sans-serif !important; color: var(--ink); font-size: 32px;
+.dj-headtext { display: flex; flex-direction: column; min-width: 0; }
+.dj-title { font-family: 'Oswald', sans-serif !important; color: var(--ink);
+            font-size: clamp(22px, 6.5vw, 32px);
             font-weight: 700; letter-spacing: .3px; line-height: .95 !important;
-            margin: 0 !important; padding: 0 !important; }
+            margin: 0 !important; padding: 0 !important; white-space: nowrap; }
 .dj-title .accent { color: var(--accent); }
 .dj-journal { font-family: 'Inter', sans-serif; font-style: italic; color: var(--accent);
-              font-size: 11px; font-weight: 500; letter-spacing: .2px; line-height: 1.15;
-              margin: 5px 0 0 !important; padding: 0 !important; }
+              font-size: clamp(10px, 3vw, 11px); font-weight: 500; letter-spacing: .2px;
+              line-height: 1.2; margin: 4px 0 0 !important; padding: 0 !important;
+              white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .dj-rule { height: 1.5px; background: var(--accent); width: 100%; border: 0; margin: 14px 0 6px;
            border-radius: 0; }
 
