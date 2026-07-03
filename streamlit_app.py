@@ -74,11 +74,10 @@ header[data-testid="stHeader"] { background: transparent; height: 0; }
 .dj-masthead img { width: 64px; height: 64px; border-radius: 12px; box-shadow: 0 1px 4px rgba(0,0,0,.12); flex-shrink: 0; }
 .dj-headtext { display: flex; flex-direction: column; }
 .dj-title { font-family: 'Oswald', sans-serif; color: var(--ink); font-size: 32px;
-            font-weight: 700; letter-spacing: .3px; line-height: 1.05; margin: 0; }
+            font-weight: 700; letter-spacing: .3px; line-height: 1.0; margin: 0; }
 .dj-title .accent { color: var(--accent); }
 .dj-journal { font-family: 'Inter', sans-serif; font-style: italic; color: var(--accent);
-              font-size: 13.5px; font-weight: 500; letter-spacing: .2px; margin: 3px 0 0; }
-.dj-tagline { color: var(--muted); font-size: 13px; margin: 5px 0 0; line-height: 1.45; }
+              font-size: 13.5px; font-weight: 500; letter-spacing: .2px; margin: 1px 0 0; }
 .dj-rule { height: 3px; background: var(--accent); width: 54px; border: 0; margin: 14px 0 4px;
            border-radius: 2px; }
 
@@ -143,7 +142,6 @@ def render_header():
           <div class="dj-headtext">
             <h1 class="dj-title">DrJha<span class="accent">GPT</span></h1>
             <p class="dj-journal">{config.BRAND_EYEBROW}</p>
-            <p class="dj-tagline">{config.BRAND_TAGLINE}</p>
           </div>
         </div>
         <hr class="dj-rule">
