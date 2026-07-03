@@ -5,6 +5,7 @@ Visual design mirrors drpranayjha.com: white editorial theme, Inter/Oswald type,
 charcoal ink (#141618) with a red accent (#ce242c).
 """
 import base64
+import html
 from functools import lru_cache
 
 import streamlit as st
@@ -31,15 +32,6 @@ def logo_image():
         return "🤖"
 
 
-@lru_cache(maxsize=1)
-def user_image():
-    """Brand-matched user avatar (charcoal + white silhouette)."""
-    try:
-        from PIL import Image
-
-        return Image.open(config.USER_AVATAR_PATH)
-    except Exception:
-        return "👤"
 
 SUGGESTIONS = [
     "What is VMware HCX and when should I use it?",
@@ -100,7 +92,12 @@ header[data-testid="stHeader"] { background: transparent; height: 0; }
 [data-testid="stChatMessage"] a:hover { border-bottom-color: var(--accent); }
 [data-testid="stChatMessage"] h1, [data-testid="stChatMessage"] h2, [data-testid="stChatMessage"] h3 {
   font-family: 'Oswald', sans-serif; color: var(--ink); letter-spacing: .2px; margin-top: .4rem; }
-[data-testid="stChatMessageAvatarUser"] { background: var(--ink) !important; }
+
+/* ---- User question bubble (right-aligned, grey) ---- */
+.dj-user-row { display: flex; justify-content: flex-end; margin: 12px 0 4px; }
+.dj-user-bubble { background: var(--panel); color: var(--ink); border: 1px solid var(--border);
+  border-radius: 14px 14px 4px 14px; padding: 9px 14px; max-width: 82%;
+  font-size: 15px; line-height: 1.55; white-space: pre-wrap; }
 
 /* ---- "Related reading" source cards ---- */
 .dj-sources { margin: 14px 0 2px; }
@@ -211,6 +208,14 @@ def render_sources(results):
         )
 
 
+def render_user(text: str):
+    st.markdown(
+        f'<div class="dj-user-row"><div class="dj-user-bubble">'
+        f'{html.escape(text)}</div></div>',
+        unsafe_allow_html=True,
+    )
+
+
 def pick_suggestion(question: str):
     st.session_state.pending = question
 
@@ -248,11 +253,13 @@ def main():
 
     # Replay history.
     for msg in st.session_state.messages:
-        avatar = logo_image() if msg["role"] == "assistant" else user_image()
-        with st.chat_message(msg["role"], avatar=avatar):
-            st.markdown(msg["content"])
-            if msg.get("sources"):
-                render_sources(msg["sources"])
+        if msg["role"] == "user":
+            render_user(msg["content"])
+        else:
+            with st.chat_message("assistant", avatar=logo_image()):
+                st.markdown(msg["content"])
+                if msg.get("sources"):
+                    render_sources(msg["sources"])
 
     typed = st.chat_input("Ask Pranay anything about Intelligent Infrastructure…")
     prompt = typed or st.session_state.pop("pending", None)
@@ -260,8 +267,7 @@ def main():
         return
 
     st.session_state.messages.append({"role": "user", "content": prompt})
-    with st.chat_message("user", avatar=user_image()):
-        st.markdown(prompt)
+    render_user(prompt)
 
     with st.chat_message("assistant", avatar=logo_image()):
         if not config.GROQ_API_KEY:

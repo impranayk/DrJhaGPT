@@ -16,7 +16,6 @@ ROOT_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT_DIR / "data"
 ASSETS_DIR = ROOT_DIR / "assets"
 LOGO_PATH = ASSETS_DIR / "logo.png"
-USER_AVATAR_PATH = ASSETS_DIR / "user.png"
 EMBEDDINGS_PATH = DATA_DIR / "knowledge.npz"      # numpy vectors
 CHUNKS_PATH = DATA_DIR / "chunks.json"            # text + metadata
 
