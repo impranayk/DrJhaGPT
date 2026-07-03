@@ -71,7 +71,8 @@ header[data-testid="stHeader"] { background: transparent; height: 0; }
 
 /* ---- Masthead ---- */
 .dj-masthead { display: flex; align-items: center; gap: 18px; }
-.dj-masthead img { width: 64px; height: 64px; border-radius: 12px; box-shadow: 0 1px 4px rgba(0,0,0,.12); flex-shrink: 0; }
+.dj-masthead img { width: 60px; height: 60px; border-radius: 12px; border: 2px solid var(--accent);
+                   box-shadow: 0 1px 4px rgba(0,0,0,.10); flex-shrink: 0; }
 .dj-headtext { display: flex; flex-direction: column; }
 .dj-title { font-family: 'Oswald', sans-serif !important; color: var(--ink); font-size: 32px;
             font-weight: 700; letter-spacing: .3px; line-height: .95 !important;
