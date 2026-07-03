@@ -14,6 +14,8 @@ load_dotenv()
 # --- Paths ---
 ROOT_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT_DIR / "data"
+ASSETS_DIR = ROOT_DIR / "assets"
+LOGO_PATH = ASSETS_DIR / "logo.png"
 EMBEDDINGS_PATH = DATA_DIR / "knowledge.npz"      # numpy vectors
 CHUNKS_PATH = DATA_DIR / "chunks.json"            # text + metadata
 
@@ -42,7 +44,15 @@ EMBED_MODEL = _get("EMBED_MODEL", "BAAI/bge-small-en-v1.5")
 RAG_TOP_K = int(_get("RAG_TOP_K", "4"))
 RAG_MIN_SCORE = float(_get("RAG_MIN_SCORE", "0.30"))
 
-# --- Branding ---
+# --- Branding (matched to drpranayjha.com) ---
 BRAND_NAME = "DrJhaGPT"
-BRAND_TAGLINE = "GenAI for Intelligent Infrastructure"
+BRAND_EYEBROW = "Journal of Intelligent Infrastructure"
+BRAND_TAGLINE = "AI answers on VMware, Cloud & AI — grounded in Dr. Pranay Jha's published work."
 WEBSITE_URL = "https://drpranayjha.com"
+
+# Brand palette (from the site's CSS custom properties)
+COLOR_INK = "#141618"
+COLOR_ACCENT = "#ce242c"
+COLOR_ACCENT_DARK = "#a81d24"
+COLOR_PANEL = "#f5f5f5"
+COLOR_MUTED = "#5f5e5a"
