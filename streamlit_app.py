@@ -71,13 +71,14 @@ header[data-testid="stHeader"] { background: transparent; height: 0; }
 
 /* ---- Masthead ---- */
 .dj-masthead { display: flex; align-items: center; gap: 16px; }
-.dj-masthead img { width: 56px; height: 56px; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,.12); }
-.dj-eyebrow { font-family: 'Oswald', sans-serif; color: var(--accent); font-size: 11px;
-              letter-spacing: 3px; font-weight: 600; text-transform: uppercase; margin: 0; }
-.dj-title { font-family: 'Oswald', sans-serif; color: var(--ink); font-size: 30px;
-            font-weight: 700; letter-spacing: .3px; line-height: 1.05; margin: 2px 0 0; }
+.dj-masthead img { width: 58px; height: 58px; border-radius: 10px; box-shadow: 0 1px 4px rgba(0,0,0,.12); }
+.dj-headtext { display: flex; flex-direction: column; }
+.dj-title { font-family: 'Oswald', sans-serif; color: var(--ink); font-size: 32px;
+            font-weight: 700; letter-spacing: .3px; line-height: 1.0; margin: 0; }
 .dj-title .accent { color: var(--accent); }
-.dj-tagline { color: var(--muted); font-size: 13.5px; margin: 6px 0 0; }
+.dj-journal { font-family: 'Inter', sans-serif; font-style: italic; color: var(--accent);
+              font-size: 13.5px; font-weight: 500; letter-spacing: .2px; margin: 4px 0 0; }
+.dj-tagline { color: var(--muted); font-size: 13.5px; margin: 10px 0 0; }
 .dj-rule { height: 3px; background: var(--accent); width: 54px; border: 0; margin: 14px 0 4px;
            border-radius: 2px; }
 
@@ -113,9 +114,15 @@ div[data-testid="stButton"] > button:hover {
   border-color: var(--accent); color: var(--accent); background: #fff; }
 
 /* ---- Chat input ---- */
-[data-testid="stChatInput"] { border-color: var(--border) !important; }
-[data-testid="stChatInput"]:focus-within { border-color: var(--accent) !important;
-  box-shadow: 0 0 0 2px rgba(206,36,44,.12) !important; }
+[data-testid="stChatInput"] { border: 1.5px solid var(--accent) !important;
+  border-radius: 12px !important; background: #fff !important; }
+[data-testid="stChatInput"] > div { border: 0 !important; background: transparent !important; }
+[data-testid="stChatInput"]:focus-within { box-shadow: 0 0 0 3px rgba(206,36,44,.15) !important; }
+/* Red send button */
+[data-testid="stChatInputSubmitButton"] { background: var(--accent) !important;
+  border-radius: 8px !important; }
+[data-testid="stChatInputSubmitButton"]:hover { background: var(--accent-dark) !important; }
+[data-testid="stChatInputSubmitButton"] svg { color: #fff !important; fill: #fff !important; }
 
 /* ---- Sidebar ---- */
 [data-testid="stSidebar"] { background: var(--panel); border-right: 1px solid var(--border); }
@@ -133,9 +140,9 @@ def render_header():
         f"""
         <div class="dj-masthead">
           {img}
-          <div>
-            <p class="dj-eyebrow">{config.BRAND_EYEBROW}</p>
+          <div class="dj-headtext">
             <h1 class="dj-title">DrJha<span class="accent">GPT</span></h1>
+            <p class="dj-journal">{config.BRAND_EYEBROW}</p>
           </div>
         </div>
         <p class="dj-tagline">{config.BRAND_TAGLINE}</p>

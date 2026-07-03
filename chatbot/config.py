@@ -47,7 +47,7 @@ RAG_MIN_SCORE = float(_get("RAG_MIN_SCORE", "0.30"))
 # --- Branding (matched to drpranayjha.com) ---
 BRAND_NAME = "DrJhaGPT"
 BRAND_EYEBROW = "Journal of Intelligent Infrastructure"
-BRAND_TAGLINE = "AI answers on VMware, Cloud & AI — grounded in Dr. Pranay Jha's published work."
+BRAND_TAGLINE = "Ask Dr. Pranay Jha anything — answered from his published work on VMware, Cloud & AI."
 WEBSITE_URL = "https://drpranayjha.com"
 
 # Brand palette (from the site's CSS custom properties)
