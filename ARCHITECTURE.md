@@ -4,8 +4,7 @@ An end-to-end look at how **DrJhaGPT** is built: an open-source, retrieval-augme
 chatbot that answers questions about VMware, cloud, datacenters, and AI using
 Dr. Pranay Jha's published work at [drpranayjha.com](https://drpranayjha.com).
 
-It was migrated from an IBM Watson / HCL internal tool to a **100% open-source,
-free-to-run** stack.
+The entire stack is **open-source and free to run** — no proprietary AI services.
 
 ---
 
@@ -109,8 +108,7 @@ chunks** from 600+ posts and pages.
 `max_tokens=1024`, `stream=True`, with a system prompt that defines DrJhaGPT's
 persona and grounding rules.
 
-No IBM, no HCL, no paid infrastructure — the only external dependency is a free
-Groq API key.
+No paid infrastructure — the only external dependency is a free Groq API key.
 
 ---
 

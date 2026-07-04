@@ -6,7 +6,7 @@ An open-source RAG (Retrieval-Augmented Generation) chatbot that answers
 questions about **VMware, cloud, datacenters, and AI** using Dr. Pranay Jha's
 published work at [drpranayjha.com](https://drpranayjha.com).
 
-Originally built on IBM Watson; now fully **open-source and free to run**.
+A fully **open-source, free-to-run** stack — no proprietary AI services.
 
 ## Architecture at a glance
 
@@ -38,7 +38,7 @@ flowchart LR
 | Retrieval | NumPy cosine similarity over a prebuilt index |
 | Knowledge source | WordPress REST API of drpranayjha.com |
 
-No IBM, no HCL, no paid infrastructure.
+Fully open-source, no paid infrastructure.
 
 ## Project layout
 
