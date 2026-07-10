@@ -182,11 +182,9 @@ Copy `.env.example` → `.env` (local) or set Streamlit **Secrets** (deployed):
 - Every visitor's questions draw on the owner's Groq free-tier quota, so a public
   deployment may want basic rate-limiting if traffic grows.
 - Streamlit Community Cloud sleeps after inactivity. To spare visitors a cold
-  "wake-up", the app is kept warm by two lightweight pingers: a **GitHub Action**
-  (`.github/workflows/keep-awake.yml`, ~every 10 min) and an external
-  **[cron-job.org](https://cron-job.org)** monitor (every 5 min). The pinger loads
-  the app with a cookie jar so Streamlit's redirect handshake resolves to a `200`.
-  App: <https://drjhagpt.streamlit.app>
+  "wake-up", an external **[cron-job.org](https://cron-job.org)** monitor pings the
+  app every 5 minutes (with "follow/accept redirects" on, so Streamlit's `303`
+  session handshake counts as success). App: <https://drjhagpt.streamlit.app>
 
 ---
 
