@@ -23,13 +23,42 @@ SYSTEM_PROMPT = (
 )
 
 
-def _client() -> Groq:
-    if not config.GROQ_API_KEY:
+def _groq_keys():
+    keys = []
+    for v in (config.GROQ_API_KEY, config.GROQ_API_KEY2):
+        keys += [k.strip() for k in (v or "").split(",") if k.strip()]
+    seen, out = set(), []
+    for k in keys:
+        if k not in seen:
+            seen.add(k)
+            out.append(k)
+    return out
+
+
+def _is_rate_limit(exc) -> bool:
+    s = str(exc).lower()
+    return ("rate_limit" in s or "429" in s or "tokens per day" in s
+            or getattr(exc, "status_code", None) == 429)
+
+
+def _complete(**kw):
+    """One completion with automatic key failover on a daily/rate limit."""
+    keys = _groq_keys()
+    if not keys:
         raise RuntimeError(
             "GROQ_API_KEY is not set. Copy .env.example to .env and add your "
             "free key from https://console.groq.com/keys"
         )
-    return Groq(api_key=config.GROQ_API_KEY)
+    last = None
+    for i, key in enumerate(keys):
+        try:
+            return Groq(api_key=key).chat.completions.create(**kw)
+        except Exception as exc:
+            last = exc
+            if _is_rate_limit(exc) and i < len(keys) - 1:
+                continue
+            raise
+    raise last
 
 
 def build_messages(question: str, context: str, history: List[Dict]) -> List[Dict]:
@@ -52,7 +81,7 @@ def build_messages(question: str, context: str, history: List[Dict]) -> List[Dic
 def stream_answer(question: str, context: str, history: List[Dict]) -> Iterator[str]:
     """Yield the answer token-by-token for a live typing effect."""
     messages = build_messages(question, context, history)
-    completion = _client().chat.completions.create(
+    completion = _complete(
         model=config.GROQ_MODEL,
         messages=messages,
         temperature=0.3,
